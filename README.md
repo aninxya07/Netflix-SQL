@@ -242,16 +242,19 @@ LIMIT 10;
 ```sql
 SELECT 
     category,
+	TYPE,
     COUNT(*) AS content_count
 FROM (
     SELECT 
+		*,
         CASE 
             WHEN description ILIKE '%kill%' OR description ILIKE '%violence%' THEN 'Bad'
             ELSE 'Good'
         END AS category
     FROM netflix
 ) AS categorized_content
-GROUP BY category;
+GROUP BY 1,2
+ORDER BY 2
 ```
 
 **Objective:** Categorize content as 'Bad' if it contains 'kill' or 'violence' and 'Good' otherwise. Count the number of items in each category.
