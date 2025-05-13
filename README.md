@@ -246,7 +246,7 @@ SELECT
     COUNT(*) AS content_count
 FROM (
     SELECT 
-		*,
+        *,
         CASE 
             WHEN description ILIKE '%kill%' OR description ILIKE '%violence%' THEN 'Bad'
             ELSE 'Good'
